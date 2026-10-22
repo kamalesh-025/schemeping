@@ -91,6 +91,11 @@ function MessageBody({ text }: { text: string }) {
  * Accessibility rules from AGENTS.md 13: 48px tap targets, icon + text labels,
  * plain language. The assistant answers from verified scheme records and can
  * help with general questions, so the panel always shows the sources it used.
+ *
+ * Every time the sheet is opened it starts a new conversation: the panel never
+ * reloads earlier chats, so a citizen who shares the phone does not see the
+ * last person's questions. Answers to a request that was still in flight when
+ * the sheet closed are dropped.
  */
 export function ChatPanel() {
   const { t, i18n } = useTranslation()
@@ -104,26 +109,41 @@ export function ChatPanel() {
   const [lastQuestion, setLastQuestion] = useState('')
   const bottomRef = useRef<HTMLDivElement | null>(null)
   const inputRef = useRef<HTMLInputElement | null>(null)
+  // Bumped whenever a conversation starts or ends; late answers from a closed
+  // sheet check it and are ignored.
+  const sessionRef = useRef(0)
 
   const firstName = auth?.profile?.name?.trim().split(/\s+/)[0] ?? ''
   const greeting = firstName
     ? t('chat.greetingNamed', { name: firstName })
     : t('chat.greeting')
 
+  const startFreshConversation = useCallback(() => {
+    sessionRef.current += 1
+    setTurns([{ role: 'assistant', content: '', greeting: true }])
+    setDraft('')
+    setSources([])
+    setError(null)
+    setLastQuestion('')
+    setBusy(false)
+  }, [])
+
+  const openChat = () => {
+    startFreshConversation()
+    setOpen(true)
+  }
+
+  const closeChat = () => {
+    // Invalidate any in-flight question; the next open starts clean.
+    sessionRef.current += 1
+    setBusy(false)
+    setOpen(false)
+  }
+
   useEffect(() => {
-    if (open) {
-      setError(null)
-      setTurns((current) =>
-        current.length > 0
-          ? current
-          : [{ role: 'assistant', content: '', greeting: true }],
-      )
-      void loadHistory()
-      const timer = window.setTimeout(() => inputRef.current?.focus(), 120)
-      return () => window.clearTimeout(timer)
-    }
-    return undefined
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (!open) return undefined
+    const timer = window.setTimeout(() => inputRef.current?.focus(), 120)
+    return () => window.clearTimeout(timer)
   }, [open])
 
   useEffect(() => {
@@ -134,27 +154,11 @@ export function ChatPanel() {
     }
   }, [turns, busy])
 
-  const loadHistory = useCallback(async () => {
-    try {
-      const history = await chatApi.history(30)
-      setTurns(
-        history.messages.length > 0
-          ? history.messages.map((message) => ({
-              role: message.role,
-              content: message.content,
-            }))
-          : [{ role: 'assistant', content: '', greeting: true }],
-      )
-    } catch {
-      // A missing history is not an error worth showing; still say hello.
-      setTurns([{ role: 'assistant', content: '', greeting: true }])
-    }
-  }, [])
-
   const send = useCallback(
     async (question: string, appendUser = true) => {
       const text = question.trim()
       if (!text || busy) return
+      const session = sessionRef.current
       const language = (i18n.language || 'en').slice(0, 2)
       if (appendUser) {
         setDraft('')
@@ -166,15 +170,17 @@ export function ChatPanel() {
       setBusy(true)
       try {
         const answer = await chatApi.ask(text, language as never)
+        if (session !== sessionRef.current) return
         setTurns((current) => [
           ...current,
           { role: 'assistant', content: answer.answer },
         ])
         setSources(answer.sources.map((source) => source.name))
       } catch (caught) {
+        if (session !== sessionRef.current) return
         setError(caught)
       } finally {
-        setBusy(false)
+        if (session === sessionRef.current) setBusy(false)
       }
     },
     [busy, i18n.language],
@@ -194,7 +200,7 @@ export function ChatPanel() {
           variant="contained"
           color="primary"
           startIcon={<ChatBubbleOutline />}
-          onClick={() => setOpen(true)}
+          onClick={openChat}
           sx={{
             minHeight: 56,
             borderRadius: 28,
@@ -213,7 +219,7 @@ export function ChatPanel() {
   return (
     <Dialog
       open
-      onClose={() => setOpen(false)}
+      onClose={closeChat}
       aria-labelledby="chat-heading"
       fullWidth
       maxWidth="sm"
@@ -260,7 +266,7 @@ export function ChatPanel() {
         </Box>
         <IconButton
           aria-label={t('chat.close')}
-          onClick={() => setOpen(false)}
+          onClick={closeChat}
           sx={{ color: 'white' }}
         >
           <Close />

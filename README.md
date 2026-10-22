@@ -469,8 +469,13 @@ variable. Highlights:
   general questions (for example, how applications usually work, common
   documents, or which office to visit). If a specific scheme is not in the
   verified records, it says so and points at the official source or nearest
-  office. Opening the chat with an empty history shows a greeting, and a bare
-  greeting does not trigger scheme cards.
+  office. A bare greeting does not trigger scheme cards.
+- **Every chat session starts fresh.** The floating assistant keeps its
+  conversation in memory only: opening the sheet begins a new conversation with
+  the greeting, and closing it drops the turns (an answer that arrives after
+  closing is ignored). The server still stores messages for quality and audit
+  (`GET /chat/history`, purged after 14 days), but the panel never reloads them,
+  so the next person to use a shared phone does not see the previous chat.
 - **Provider.** The assistant, simplification, and translation all use
   Gemini by default (`GEMINI_API_KEY`, `LLM_PROVIDER=gemini`). The Claude
   adapter remains optional for later. Without a Gemini key the app falls back

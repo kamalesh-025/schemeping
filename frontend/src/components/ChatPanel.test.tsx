@@ -81,6 +81,30 @@ describe('ChatPanel', () => {
     ).toBeTruthy()
   })
 
+  it('starts a fresh conversation every time it is opened', async () => {
+    const user = userEvent.setup()
+    renderPanel()
+
+    await user.click(screen.getByRole('button', { name: /ask the assistant/i }))
+    const input = await screen.findByPlaceholderText(/type your question/i)
+    await user.type(input, 'Is there help for my daughter college fees?')
+    await user.click(screen.getByRole('button', { name: /^send$/i }))
+    expect(await screen.findByText(/eligible for the tuition scheme/i)).toBeTruthy()
+
+    await user.click(screen.getByRole('button', { name: /close/i }))
+    await user.click(screen.getByRole('button', { name: /ask the assistant/i }))
+
+    expect(
+      await screen.findByText(/ask me anything about government schemes/i),
+    ).toBeTruthy()
+    expect(screen.queryByText(/eligible for the tuition scheme/i)).not.toBeInTheDocument()
+    expect(
+      screen.queryByText('Is there help for my daughter college fees?'),
+    ).not.toBeInTheDocument()
+    // Old chats are never reloaded into the sheet.
+    expect(requests).not.toContain('GET /api/v1/chat/history')
+  })
+
   it('sends a question and shows the answer with its sources', async () => {
     const user = userEvent.setup()
     renderPanel()
