@@ -1,0 +1,38 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# ---- Node ----
+node_modules/
+frontend/dist/
+frontend/coverage/
+*.local
+
+# ---- Env and secrets ----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ---- Editors / OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---- Runtime ----
+*.log
+mysql-data/
+
+# ---- Local design-inspection artifacts (agent tooling, not app source) ----
+.taste-skill/

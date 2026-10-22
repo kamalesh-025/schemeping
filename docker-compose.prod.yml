@@ -1,0 +1,202 @@
+# Production stack: Caddy (TLS) + API + worker + beat + MySQL + Redis + PWA.
+#
+# Usage:
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+#
+# Everything secret comes from the environment (see .env.example). Caddy
+# issues the TLS certificate automatically for the domain in CADDY_DOMAIN.
+services:
+  mysql:
+    restart: unless-stopped
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --default-time-zone=+00:00
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-schemeping}
+      MYSQL_USER: ${MYSQL_USER:-schemeping}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?set MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?set MYSQL_ROOT_PASSWORD}
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "mysqladmin ping -h 127.0.0.1 -u root -p$$MYSQL_ROOT_PASSWORD --silent",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+    # Not published: only the app containers talk to it.
+    expose:
+      - "3306"
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory-policy", "noeviction"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    expose:
+      - "6379"
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+    environment:
+      APP_ENV: production
+      DEBUG: "false"
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      API_PREFIX: ${API_PREFIX:-/api/v1}
+      SECRET_KEY: ${SECRET_KEY:?set SECRET_KEY}
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY:?set ENCRYPTION_KEY}
+      DATABASE_URL: mysql+pymysql://${MYSQL_USER:-schemeping}:${MYSQL_PASSWORD}@mysql:3306/${MYSQL_DATABASE:-schemeping}?charset=utf8mb4
+      CORS_ORIGINS: ${CORS_ORIGINS:?set CORS_ORIGINS}
+      COOKIE_SECURE: "true"
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      SENTRY_DSN: ${SENTRY_DSN:-}
+      SENTRY_ENVIRONMENT: production
+      SENTRY_TRACES_SAMPLE_RATE: ${SENTRY_TRACES_SAMPLE_RATE:-0.0}
+      LLM_PROVIDER: ${LLM_PROVIDER:-gemini}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      ANTHROPIC_MODEL: ${ANTHROPIC_MODEL:-claude-3-5-haiku-latest}
+      AUTH_MODE: ${AUTH_MODE:-password}
+      PASSWORD_MIN_LENGTH: ${PASSWORD_MIN_LENGTH:-8}
+      MESSAGING_PROVIDER: ${MESSAGING_PROVIDER:-log}
+      WHATSAPP_PROVIDER: ${WHATSAPP_PROVIDER:-mock}
+      MSG91_AUTH_KEY: ${MSG91_AUTH_KEY:-}
+      MSG91_WHATSAPP_NUMBER: ${MSG91_WHATSAPP_NUMBER:-}
+      MSG91_WHATSAPP_TEMPLATE_IDS: ${MSG91_WHATSAPP_TEMPLATE_IDS:-}
+      WHATSAPP_WEBHOOK_SECRET: ${WHATSAPP_WEBHOOK_SECRET:?set WHATSAPP_WEBHOOK_SECRET}
+      SEND_WHATSAPP_HOURLY_LIMIT: ${SEND_WHATSAPP_HOURLY_LIMIT:-10}
+      NOTIFICATIONS_SCHEDULE_ENABLED: ${NOTIFICATIONS_SCHEDULE_ENABLED:-true}
+      ADMIN_API_KEY: ${ADMIN_API_KEY:?set ADMIN_API_KEY}
+      ADMIN_PANEL_ENABLED: "true"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "curl",
+          "-fsS",
+          "http://127.0.0.1:8000/ready",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+    command: ["celery", "-A", "app.workers.celery_app.celery_app", "worker", "--loglevel=info", "--concurrency=2"]
+    environment:
+      APP_ENV: production
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      SECRET_KEY: ${SECRET_KEY}
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY}
+      DATABASE_URL: mysql+pymysql://${MYSQL_USER:-schemeping}:${MYSQL_PASSWORD}@mysql:3306/${MYSQL_DATABASE:-schemeping}?charset=utf8mb4
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      SENTRY_DSN: ${SENTRY_DSN:-}
+      WHATSAPP_PROVIDER: ${WHATSAPP_PROVIDER:-mock}
+      MSG91_AUTH_KEY: ${MSG91_AUTH_KEY:-}
+      MSG91_WHATSAPP_NUMBER: ${MSG91_WHATSAPP_NUMBER:-}
+      MSG91_WHATSAPP_TEMPLATE_IDS: ${MSG91_WHATSAPP_TEMPLATE_IDS:-}
+      WHATSAPP_WEBHOOK_SECRET: ${WHATSAPP_WEBHOOK_SECRET}
+      ADMIN_API_KEY: ${ADMIN_API_KEY}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  beat:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+    command: ["celery", "-A", "app.workers.celery_app.celery_app", "beat", "--loglevel=info"]
+    environment:
+      APP_ENV: production
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      SECRET_KEY: ${SECRET_KEY}
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY}
+      DATABASE_URL: mysql+pymysql://${MYSQL_USER:-schemeping}:${MYSQL_PASSWORD}@mysql:3306/${MYSQL_DATABASE:-schemeping}?charset=utf8mb4
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      NOTIFICATIONS_SCHEDULE_ENABLED: ${NOTIFICATIONS_SCHEDULE_ENABLED:-true}
+      ADMIN_API_KEY: ${ADMIN_API_KEY}
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+
+  caddy:
+    image: caddy:2.8-alpine
+    restart: unless-stopped
+    environment:
+      CADDY_DOMAIN: ${CADDY_DOMAIN:?set CADDY_DOMAIN}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - web
+      - api
+
+  # Metabase reads the database read-only. Bound to localhost only: reach it
+  # through an SSH tunnel, never over the public internet.
+  metabase:
+    image: metabase/metabase:v0.54.10
+    restart: unless-stopped
+    profiles: ["analytics"]
+    environment:
+      MB_DB_TYPE: h2
+      MB_JETTY_PORT: 3000
+    volumes:
+      - metabase-data:/data
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  mysql-data:
+  redis-data:
+  caddy-data:
+  caddy-config:
+  metabase-data:

@@ -1,0 +1,46 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: ayushman-bharat-pm-jay
+name: Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (PM-JAY)
+department: Ministry of Health and Family Welfare
+level: central
+state: null
+category: healthcare
+scope: family
+benefit_summary: >-
+  Cashless secondary and tertiary hospital care for eligible households, up to the
+  annual family cover, at empanelled public and private hospitals.
+benefit_amount: "INR 500000 per family per year"
+benefit_type: insurance
+eligibility_rules:
+  applies_to: family
+  rules:
+    all:
+      - field: household_income
+        op: "<="
+        value: 250000
+      - field: family_size
+        op: ">="
+        value: 1
+required_documents:
+  - name: Ration card
+    notes: Priority household or Antyodaya card.
+  - name: Aadhaar card
+    notes: One per family member.
+  - name: Income certificate
+    notes: Issued by the revenue department.
+application_steps:
+  - order: 1
+    title: Check the beneficiary list
+    description: Search the PM-JAY portal or ask at the nearest CSC.
+  - order: 2
+    title: Visit the CSC or hospital help desk
+    description: Carry ration card, Aadhaar and income certificate.
+  - order: 3
+    title: Get the Ayushman card
+    description: Complete e-KYC and collect the family Ayushman card.
+apply_url: https://pmjay.gov.in/
+deadline: null
+status: draft
+priority: 10
+last_verified_on: 2026-09-15
+source_url: https://pmjay.gov.in/

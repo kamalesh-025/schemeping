@@ -1,0 +1,43 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: tn-cm-comprehensive-health-insurance
+name: Chief Minister's Comprehensive Health Insurance Scheme
+department: Health and Family Welfare Department, Government of Tamil Nadu
+level: state
+state: Tamil Nadu
+category: healthcare
+scope: family
+benefit_summary: >-
+  Cashless hospital treatment up to a fixed yearly limit for the whole family
+  at network hospitals in Tamil Nadu, including government hospitals.
+benefit_amount: Up to INR 500000 per year
+benefit_type: insurance
+eligibility_rules:
+  applies_to: family
+  rules:
+    all:
+      - field: household_income
+        op: "<="
+        value: 720000
+      - field: state
+        op: "=="
+        value: Tamil Nadu
+required_documents:
+  - name: Ration card
+  - name: Aadhaar cards of all family members
+  - name: Income certificate
+application_steps:
+  - order: 1
+    title: Check the family is on the list
+    description: Search the ration card number on the scheme portal.
+  - order: 2
+    title: Get the smart card
+    description: Collect the health insurance smart card at the e-Sevai centre.
+  - order: 3
+    title: Use it at network hospitals
+    description: Show the card at the hospital help desk for cashless treatment.
+apply_url: https://www.tn.gov.in/
+deadline: null
+status: draft
+priority: 6
+last_verified_on: 2026-09-22
+source_url: https://www.tn.gov.in/

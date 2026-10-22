@@ -1,0 +1,54 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: tn-rural-house-site-assistance
+name: Free House Site and House Assistance for Rural Families
+department: Rural Development and Panchayat Raj Department, Government of Tamil Nadu
+level: state
+state: Tamil Nadu
+category: housing
+scope: family
+benefit_summary: >-
+  A free house site plot, and in eligible cases a new house, for rural
+  families in Tamil Nadu who do not own land or a house.
+benefit_amount: House site plot plus up to INR 350000
+benefit_type: in_kind
+eligibility_rules:
+  applies_to: family
+  rules:
+    all:
+      - field: household_income
+        op: "<="
+        value: 300000
+      - field: state
+        op: "=="
+        value: Tamil Nadu
+      - any:
+          - field: has_senior
+            op: "=="
+            value: true
+          - field: has_disabled_member
+            op: "=="
+            value: true
+          - field: family_size
+            op: ">="
+            value: 3
+required_documents:
+  - name: Ration card
+  - name: Aadhaar cards of all family members
+  - name: Income certificate
+  - name: Declaration that the family owns no house
+application_steps:
+  - order: 1
+    title: Apply at the village panchayat
+    description: Get and submit the form at the village office.
+  - order: 2
+    title: Field verification
+    description: Officials verify land, income and family details.
+  - order: 3
+    title: Receive allotment
+    description: The plot or house is allotted after approval.
+apply_url: https://www.tn.gov.in/
+deadline: null
+status: draft
+priority: 9
+last_verified_on: 2026-09-22
+source_url: https://www.tn.gov.in/

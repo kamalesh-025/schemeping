@@ -1,0 +1,43 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: tn-poor-patient-assistance
+name: Financial Assistance for Poor Patients
+department: Revenue Department, Government of Tamil Nadu
+level: state
+state: Tamil Nadu
+category: healthcare
+scope: family
+benefit_summary: >-
+  One-time assistance for low-income families facing large hospital bills for
+  a serious illness or surgery in Tamil Nadu.
+benefit_amount: Up to INR 100000
+benefit_type: cash
+eligibility_rules:
+  applies_to: family
+  rules:
+    all:
+      - field: household_income
+        op: "<="
+        value: 250000
+      - field: state
+        op: "=="
+        value: Tamil Nadu
+required_documents:
+  - name: Ration card
+  - name: Income certificate
+  - name: Hospital bill and discharge summary
+application_steps:
+  - order: 1
+    title: Collect hospital papers
+    description: Get the bill, discharge summary and treatment estimate.
+  - order: 2
+    title: Apply at the Taluk office
+    description: Submit the request with income and hospital documents.
+  - order: 3
+    title: Receive the assistance
+    description: The amount is credited after verification.
+apply_url: https://www.tn.gov.in/
+deadline: null
+status: draft
+priority: 7
+last_verified_on: 2026-09-22
+source_url: https://www.tn.gov.in/

@@ -1,0 +1,49 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: tn-senior-citizen-house-roof-assistance
+name: House Roof Assistance for Senior Citizens
+department: Rural Development and Panchayat Raj Department, Government of Tamil Nadu
+level: state
+state: Tamil Nadu
+category: housing
+scope: family
+benefit_summary: >-
+  Assistance to repair or replace the roof of a thatched house for families in
+  Tamil Nadu with a senior citizen or a disabled member.
+benefit_amount: Up to INR 30000
+benefit_type: cash
+eligibility_rules:
+  applies_to: family
+  rules:
+    all:
+      - field: state
+        op: "=="
+        value: Tamil Nadu
+      - any:
+          - field: has_senior
+            op: "=="
+            value: true
+          - field: has_disabled_member
+            op: "=="
+            value: true
+      - not:
+          all:
+            - field: household_income
+              op: ">"
+              value: 720000
+required_documents:
+  - name: Ration card
+  - name: Aadhaar card
+  - name: Income certificate
+application_steps:
+  - order: 1
+    title: Apply at the Taluk office
+    description: Submit the form with income proof and house details.
+  - order: 2
+    title: Receive the assistance
+    description: The amount is credited after verification.
+apply_url: https://www.tn.gov.in/
+deadline: null
+status: draft
+priority: 10
+last_verified_on: 2026-09-22
+source_url: https://www.tn.gov.in/

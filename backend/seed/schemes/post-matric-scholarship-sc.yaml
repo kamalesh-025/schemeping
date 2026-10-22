@@ -1,0 +1,51 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: post-matric-scholarship-sc
+name: Post-Matric Scholarship for Scheduled Caste Students
+department: Ministry of Social Justice and Empowerment
+level: central
+state: null
+category: education
+scope: individual
+benefit_summary: >-
+  Scholarship covering tuition and maintenance for Scheduled Caste students
+  studying after class 10.
+benefit_amount: "Course fee plus monthly maintenance"
+benefit_type: cash
+eligibility_rules:
+  applies_to: individual
+  rules:
+    all:
+      - field: is_student
+        op: "=="
+        value: true
+      - field: age
+        op: ">="
+        value: 15
+      - field: annual_income
+        op: "<="
+        value: 250000
+      - field: education_status
+        op: in
+        value: [higher_secondary, iti, diploma, undergraduate, postgraduate]
+required_documents:
+  - name: Caste certificate
+  - name: Income certificate
+  - name: Previous year mark sheet
+  - name: College fee receipt
+  - name: Bank passbook
+application_steps:
+  - order: 1
+    title: Register on the national scholarship portal
+    description: Create an account and complete the student profile.
+  - order: 2
+    title: Upload documents
+    description: Upload the caste, income and education certificates.
+  - order: 3
+    title: Submit through the institution
+    description: The college verifies and forwards the application.
+apply_url: https://scholarships.gov.in/
+deadline: 2026-12-31
+status: draft
+priority: 60
+last_verified_on: 2026-09-12
+source_url: https://scholarships.gov.in/

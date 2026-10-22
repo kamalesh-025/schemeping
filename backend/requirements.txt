@@ -1,0 +1,19 @@
+fastapi>=0.115,<1.0
+uvicorn[standard]>=0.32,<1.0
+SQLAlchemy>=2.0.36,<3.0
+# Required by SQLAlchemy's asyncio support (the async database engine).
+greenlet>=3.0,<4.0
+alembic>=1.14,<2.0
+PyMySQL>=1.1,<2.0
+cryptography>=46.0.7,<51.0
+pydantic>=2.10,<3.0
+pydantic-settings>=2.6,<3.0
+sentry-sdk[fastapi]>=2.19,<3.0
+celery[redis]>=5.4,<6.0
+redis>=5.2,<6.0
+PyYAML>=6.0,<7.0
+PyJWT>=2.10,<3.0
+httpx>=0.28,<1.0
+sqladmin>=0.27,<0.28
+# Starlette's SessionMiddleware (used by the SQLAdmin staff login) needs it.
+itsdangerous>=2.2,<3.0

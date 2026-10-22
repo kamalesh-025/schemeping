@@ -1,0 +1,46 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: tn-women-entrepreneur-subsidy
+name: Subsidy for Women Entrepreneurs
+department: Micro, Small and Medium Enterprises Department, Government of Tamil Nadu
+level: state
+state: Tamil Nadu
+category: women
+scope: individual
+benefit_summary: >-
+  Capital subsidy and training support for women in Tamil Nadu who start or run
+  a small business.
+benefit_amount: Up to INR 200000 subsidy
+benefit_type: subsidy
+eligibility_rules:
+  applies_to: individual
+  rules:
+    all:
+      - field: gender
+        op: "=="
+        value: female
+      - field: age
+        op: between
+        value: [18, 55]
+      - field: state
+        op: "=="
+        value: Tamil Nadu
+required_documents:
+  - name: Aadhaar card
+  - name: Bank passbook
+  - name: Business plan or mention of the trade
+application_steps:
+  - order: 1
+    title: Attend the EDC training
+    description: Complete the Entrepreneurship Development Programme.
+  - order: 2
+    title: Submit the project report
+    description: Submit the business plan with the application.
+  - order: 3
+    title: Receive the subsidy
+    description: The subsidy follows the bank loan sanction.
+apply_url: https://www.msmedi.tn.gov.in/
+deadline: null
+status: draft
+priority: 11
+last_verified_on: 2026-09-23
+source_url: https://www.tn.gov.in/

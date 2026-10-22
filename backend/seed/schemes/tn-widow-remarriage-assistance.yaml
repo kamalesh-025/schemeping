@@ -1,0 +1,46 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: tn-widow-remarriage-assistance
+name: Financial Assistance for Widow Remarriage
+department: Social Welfare and Nutritious Meal Programme Department, Government of Tamil Nadu
+level: state
+state: Tamil Nadu
+category: women
+scope: individual
+benefit_summary: >-
+  One-time assistance for a widow in Tamil Nadu who remarries within a fixed
+  age range.
+benefit_amount: Up to INR 25000
+benefit_type: cash
+eligibility_rules:
+  applies_to: individual
+  rules:
+    all:
+      - field: is_widow
+        op: "=="
+        value: true
+      - field: gender
+        op: "=="
+        value: female
+      - field: age
+        op: between
+        value: [18, 45]
+      - field: state
+        op: "=="
+        value: Tamil Nadu
+required_documents:
+  - name: Aadhaar card
+  - name: Death certificate of the first husband
+  - name: Marriage registration document
+application_steps:
+  - order: 1
+    title: Apply at the District Social Welfare Office
+    description: Submit the form with the death and marriage documents.
+  - order: 2
+    title: Receive the assistance
+    description: The amount is credited after verification.
+apply_url: https://www.tn.gov.in/
+deadline: null
+status: draft
+priority: 12
+last_verified_on: 2026-09-23
+source_url: https://www.tn.gov.in/

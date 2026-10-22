@@ -1,0 +1,47 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: pm-scholarship-central-sector
+name: Central Sector Scholarship for College Students
+department: Ministry of Education, Government of India
+level: central
+state: null
+category: education
+scope: individual
+benefit_summary: >-
+  A yearly scholarship for students with high board marks from low-income
+  families studying in recognised colleges anywhere in India.
+benefit_amount: INR 12500 to INR 20000 per year
+benefit_type: cash
+eligibility_rules:
+  applies_to: individual
+  rules:
+    all:
+      - field: is_student
+        op: "=="
+        value: true
+      - field: age
+        op: between
+        value: [17, 25]
+      - field: annual_income
+        op: "<="
+        value: 800000
+required_documents:
+  - name: Aadhaar card
+  - name: Marks certificate
+  - name: Income certificate
+  - name: College fee receipt
+application_steps:
+  - order: 1
+    title: Register on the portal
+    description: Register on the National Scholarship Portal and complete the profile.
+  - order: 2
+    title: Upload documents
+    description: Upload marks, income and bank documents.
+  - order: 3
+    title: Institute verification
+    description: The college verifies the application online.
+apply_url: https://scholarships.gov.in/
+deadline: null
+status: draft
+priority: 16
+last_verified_on: 2026-09-24
+source_url: https://www.myscheme.gov.in/

@@ -1,0 +1,44 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: pm-ujjwala-yojana
+name: Pradhan Mantri Ujjwala Yojana (PMUY)
+department: Ministry of Petroleum and Natural Gas
+level: central
+state: null
+category: family_welfare
+scope: family
+benefit_summary: >-
+  Deposit-free LPG connection and first refill for women from eligible
+  low-income households.
+benefit_amount: "Free LPG connection plus first refill"
+benefit_type: in_kind
+eligibility_rules:
+  applies_to: family
+  rules:
+    all:
+      - field: household_income
+        op: "<="
+        value: 200000
+      - field: family_size
+        op: ">="
+        value: 1
+required_documents:
+  - name: Aadhaar card
+  - name: Ration card
+  - name: Bank passbook
+  - name: Address proof
+application_steps:
+  - order: 1
+    title: Visit the LPG distributor
+    description: Take the KYC form from any nearby LPG distributor.
+  - order: 2
+    title: Submit KYC
+    description: Provide Aadhaar, ration card and bank details.
+  - order: 3
+    title: Collect the connection
+    description: The distributor installs the connection after verification.
+apply_url: https://www.pmuy.gov.in/
+deadline: null
+status: draft
+priority: 70
+last_verified_on: 2026-09-18
+source_url: https://www.pmuy.gov.in/

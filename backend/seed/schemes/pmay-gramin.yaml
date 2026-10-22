@@ -1,0 +1,47 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: pmay-gramin
+name: Pradhan Mantri Awas Yojana - Gramin (PMAY-G)
+department: Ministry of Rural Development
+level: central
+state: null
+category: housing
+scope: family
+benefit_summary: >-
+  Financial assistance to build or upgrade a pucca house for households that do
+  not already own a permanent dwelling.
+benefit_amount: "Up to INR 130000 in plain areas"
+benefit_type: subsidy
+eligibility_rules:
+  applies_to: family
+  rules:
+    all:
+      - field: household_income
+        op: "<="
+        value: 300000
+      - field: family_size
+        op: ">="
+        value: 1
+required_documents:
+  - name: Aadhaar card
+  - name: Job card (MGNREGA)
+  - name: Bank passbook
+  - name: Land documents
+application_steps:
+  - order: 1
+    title: Check the SECC beneficiary list
+    description: Ask the village panchayat whether the household is listed.
+  - order: 2
+    title: Apply at the panchayat
+    description: Submit the application with Aadhaar and job card details.
+  - order: 3
+    title: Wait for verification
+    description: The panchayat and block office verify the house status.
+  - order: 4
+    title: Receive instalments
+    description: Instalments are released as construction progresses.
+apply_url: https://pmayg.nic.in/
+deadline: null
+status: draft
+priority: 50
+last_verified_on: 2026-09-12
+source_url: https://pmayg.nic.in/

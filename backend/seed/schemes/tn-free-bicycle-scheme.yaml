@@ -1,0 +1,43 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: tn-free-bicycle-scheme
+name: Free Bicycle Scheme for Higher Secondary Students
+department: School Education Department, Government of Tamil Nadu
+level: state
+state: Tamil Nadu
+category: education
+scope: individual
+benefit_summary: >-
+  A free bicycle for students of classes 11 and 12 in government and
+  government-aided schools in Tamil Nadu so they can travel to school safely.
+benefit_amount: One bicycle
+benefit_type: in_kind
+eligibility_rules:
+  applies_to: individual
+  rules:
+    all:
+      - field: is_student
+        op: "=="
+        value: true
+      - field: age
+        op: between
+        value: [15, 18]
+      - field: state
+        op: "=="
+        value: Tamil Nadu
+required_documents:
+  - name: Aadhaar card
+  - name: School ID card
+  - name: Student bonafide certificate
+application_steps:
+  - order: 1
+    title: Register with the school
+    description: The school collects student details for the bicycle distribution list.
+  - order: 2
+    title: Collect the bicycle
+    description: Bicycles are distributed at the school after verification.
+apply_url: https://www.tn.gov.in/
+deadline: null
+status: draft
+priority: 2
+last_verified_on: 2026-09-20
+source_url: https://www.tn.gov.in/

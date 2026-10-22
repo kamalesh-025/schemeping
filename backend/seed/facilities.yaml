@@ -1,0 +1,563 @@
+# SAMPLE DATA, verify against the official source before publishing.
+# Coordinates are approximate district-centre positions used to exercise the
+# spatial query in development. Do not treat them as verified office locations.
+
+- external_ref: tn-chennai-egmore-esevai
+  name: Chennai Egmore e-Sevai Centre
+  type: e_sevai
+  address: Sample address, Egmore, Chennai
+  district: Chennai
+  state: Tamil Nadu
+  pincode: "600008"
+  phone: "+91-44-0000-0001"
+  working_hours: Mon-Sat 9:30am-5:30pm
+  latitude: 13.0787
+  longitude: 80.2609
+  verified_on: 2026-09-01
+  source_url: https://www.tn.gov.in/
+
+- external_ref: tn-chennai-tondiarpet-csc
+  name: Tondiarpet Common Service Centre
+  type: csc
+  address: Sample address, Tondiarpet, Chennai
+  district: Chennai
+  state: Tamil Nadu
+  pincode: "600081"
+  phone: "+91-44-0000-0002"
+  working_hours: Mon-Sat 9:00am-6:00pm
+  latitude: 13.1246
+  longitude: 80.2890
+  verified_on: 2026-09-01
+  source_url: https://www.tn.gov.in/
+
+- external_ref: tn-coimbatore-collectorate
+  name: Coimbatore District Collectorate
+  type: collector_office
+  address: Sample address, Collectorate, Coimbatore
+  district: Coimbatore
+  state: Tamil Nadu
+  pincode: "641018"
+  phone: "+91-422-0000003"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 11.0016
+  longitude: 76.9626
+  verified_on: 2026-09-02
+  source_url: https://coimbatore.nic.in/
+
+- external_ref: tn-coimbatore-taluk
+  name: Coimbatore North Taluk Office
+  type: taluk_office
+  address: Sample address, Taluk Office, Coimbatore
+  district: Coimbatore
+  state: Tamil Nadu
+  pincode: "641001"
+  phone: "+91-422-0000004"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 11.0168
+  longitude: 76.9558
+  verified_on: 2026-09-02
+  source_url: https://coimbatore.nic.in/
+
+- external_ref: tn-madurai-collectorate
+  name: Madurai District Collectorate
+  type: collector_office
+  address: Sample address, Collectorate, Madurai
+  district: Madurai
+  state: Tamil Nadu
+  pincode: "625020"
+  phone: "+91-452-0000005"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 9.9252
+  longitude: 78.1198
+  verified_on: 2026-09-03
+  source_url: https://madurai.nic.in/
+
+- external_ref: tn-madurai-esevai
+  name: Madurai Central e-Sevai Centre
+  type: e_sevai
+  address: Sample address, Anna Bus Stand, Madurai
+  district: Madurai
+  state: Tamil Nadu
+  pincode: "625020"
+  phone: "+91-452-0000006"
+  working_hours: Mon-Sat 9:30am-5:30pm
+  latitude: 9.9195
+  longitude: 78.1245
+  verified_on: 2026-09-03
+  source_url: https://www.tn.gov.in/
+
+- external_ref: tn-salem-welfare
+  name: Salem District Social Welfare Office
+  type: welfare_office
+  address: Sample address, Hasthampatti, Salem
+  district: Salem
+  state: Tamil Nadu
+  pincode: "636007"
+  phone: "+91-427-0000007"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 11.6643
+  longitude: 78.1460
+  verified_on: 2026-09-04
+  source_url: https://salem.nic.in/
+
+- external_ref: tn-tiruchirappalli-taluk
+  name: Tiruchirappalli Taluk Office
+  type: taluk_office
+  address: Sample address, Cantonment, Tiruchirappalli
+  district: Tiruchirappalli
+  state: Tamil Nadu
+  pincode: "620001"
+  phone: "+91-431-0000008"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 10.7905
+  longitude: 78.7047
+  verified_on: 2026-09-05
+  source_url: https://tiruchirappalli.nic.in/
+
+- external_ref: tn-madurai-rural-csc
+  name: Madurai Rural Common Service Centre
+  type: csc
+  address: Sample address, Melur, Madurai district
+  district: Madurai
+  state: Tamil Nadu
+  pincode: "625106"
+  phone: "+91-452-0000009"
+  working_hours: Mon-Sat 9:00am-6:00pm
+  latitude: 10.0412
+  longitude: 78.3390
+  verified_on: 2026-09-05
+  source_url: https://www.tn.gov.in/
+
+- external_ref: tn-thoothukudi-collectorate
+  name: Thoothukudi District Collectorate
+  type: collector_office
+  address: Sample address, Collectorate, Thoothukudi
+  district: Thoothukudi
+  state: Tamil Nadu
+  pincode: "628002"
+  phone: "+91-461-0000010"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 8.7642
+  longitude: 78.1348
+  verified_on: 2026-09-06
+  source_url: https://thoothukudi.nic.in/
+
+- external_ref: tn-chennai-central-taluk
+  name: Chennai Mambalam Taluk Office
+  type: taluk_office
+  address: Sample address, Thyagaraya Nagar, Chennai
+  district: Chennai
+  state: Tamil Nadu
+  pincode: "600017"
+  phone: "+91-44-0000-0011"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 13.0140
+  longitude: 80.2340
+  verified_on: 2026-09-06
+  source_url: https://www.tn.gov.in/
+
+- external_ref: tn-chennai-welfare
+  name: Chennai District Social Welfare Office
+  type: welfare_office
+  address: Sample address, Kamarajar Salai, Chennai
+  district: Chennai
+  state: Tamil Nadu
+  pincode: "600005"
+  phone: "+91-44-0000-0012"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 13.0600
+  longitude: 80.2750
+  verified_on: 2026-09-06
+  source_url: https://www.tn.gov.in/
+
+- external_ref: tn-coimbatore-esevai
+  name: Coimbatore Gandhipuram e-Sevai Centre
+  type: e_sevai
+  address: Sample address, Gandhipuram, Coimbatore
+  district: Coimbatore
+  state: Tamil Nadu
+  pincode: "641012"
+  phone: "+91-422-0000013"
+  working_hours: Mon-Sat 9:30am-5:30pm
+  latitude: 11.0270
+  longitude: 76.9660
+  verified_on: 2026-09-07
+  source_url: https://www.tn.gov.in/
+
+- external_ref: tn-coimbatore-welfare
+  name: Coimbatore District Welfare Office
+  type: welfare_office
+  address: Sample address, Collectorate Road, Coimbatore
+  district: Coimbatore
+  state: Tamil Nadu
+  pincode: "641018"
+  phone: "+91-422-0000014"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 11.0050
+  longitude: 76.9700
+  verified_on: 2026-09-07
+  source_url: https://coimbatore.nic.in/
+
+- external_ref: tn-madurai-taluk
+  name: Madurai East Taluk Office
+  type: taluk_office
+  address: Sample address, Tallakulam, Madurai
+  district: Madurai
+  state: Tamil Nadu
+  pincode: "625021"
+  phone: "+91-452-0000015"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 9.9310
+  longitude: 78.1430
+  verified_on: 2026-09-07
+  source_url: https://madurai.nic.in/
+
+- external_ref: tn-madurai-welfare
+  name: Madurai District Social Welfare Office
+  type: welfare_office
+  address: Sample address, Collectorate Annexe, Madurai
+  district: Madurai
+  state: Tamil Nadu
+  pincode: "625020"
+  phone: "+91-452-0000016"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 9.9230
+  longitude: 78.1160
+  verified_on: 2026-09-07
+  source_url: https://madurai.nic.in/
+
+- external_ref: tn-salem-collectorate
+  name: Salem District Collectorate
+  type: collector_office
+  address: Sample address, Collectorate, Salem
+  district: Salem
+  state: Tamil Nadu
+  pincode: "636001"
+  phone: "+91-427-0000017"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 11.6580
+  longitude: 78.1600
+  verified_on: 2026-09-08
+  source_url: https://salem.nic.in/
+
+- external_ref: tn-salem-esevai
+  name: Salem Fairlands e-Sevai Centre
+  type: e_sevai
+  address: Sample address, Fairlands, Salem
+  district: Salem
+  state: Tamil Nadu
+  pincode: "636016"
+  phone: "+91-427-0000018"
+  working_hours: Mon-Sat 9:30am-5:30pm
+  latitude: 11.6690
+  longitude: 78.1350
+  verified_on: 2026-09-08
+  source_url: https://www.tn.gov.in/
+
+- external_ref: tn-salem-taluk
+  name: Salem West Taluk Office
+  type: taluk_office
+  address: Sample address, Hasthampatti, Salem
+  district: Salem
+  state: Tamil Nadu
+  pincode: "636007"
+  phone: "+91-427-0000019"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 11.6630
+  longitude: 78.1440
+  verified_on: 2026-09-08
+  source_url: https://salem.nic.in/
+
+- external_ref: tn-trichy-collectorate
+  name: Tiruchirappalli District Collectorate
+  type: collector_office
+  address: Sample address, Collectorate, Tiruchirappalli
+  district: Tiruchirappalli
+  state: Tamil Nadu
+  pincode: "620001"
+  phone: "+91-431-0000020"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 10.7910
+  longitude: 78.7010
+  verified_on: 2026-09-08
+  source_url: https://tiruchirappalli.nic.in/
+
+- external_ref: tn-trichy-esevai
+  name: Tiruchirappalli Rockfort e-Sevai Centre
+  type: e_sevai
+  address: Sample address, Thillainagar, Tiruchirappalli
+  district: Tiruchirappalli
+  state: Tamil Nadu
+  pincode: "620018"
+  phone: "+91-431-0000021"
+  working_hours: Mon-Sat 9:30am-5:30pm
+  latitude: 10.7990
+  longitude: 78.6900
+  verified_on: 2026-09-08
+  source_url: https://www.tn.gov.in/
+
+- external_ref: tn-trichy-welfare
+  name: Tiruchirappalli District Welfare Office
+  type: welfare_office
+  address: Sample address, Cantonment, Tiruchirappalli
+  district: Tiruchirappalli
+  state: Tamil Nadu
+  pincode: "620001"
+  phone: "+91-431-0000022"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 10.7890
+  longitude: 78.7060
+  verified_on: 2026-09-09
+  source_url: https://tiruchirappalli.nic.in/
+
+- external_ref: tn-tirunelveli-collectorate
+  name: Tirunelveli District Collectorate
+  type: collector_office
+  address: Sample address, Collectorate, Tirunelveli
+  district: Tirunelveli
+  state: Tamil Nadu
+  pincode: "627002"
+  phone: "+91-462-0000023"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 8.7300
+  longitude: 77.7000
+  verified_on: 2026-09-09
+  source_url: https://tirunelveli.nic.in/
+
+- external_ref: tn-tirunelveli-esevai
+  name: Tirunelveli Town e-Sevai Centre
+  type: e_sevai
+  address: Sample address, Town Bus Stand, Tirunelveli
+  district: Tirunelveli
+  state: Tamil Nadu
+  pincode: "627001"
+  phone: "+91-462-0000024"
+  working_hours: Mon-Sat 9:30am-5:30pm
+  latitude: 8.7290
+  longitude: 77.7050
+  verified_on: 2026-09-09
+  source_url: https://www.tn.gov.in/
+
+- external_ref: tn-erode-collectorate
+  name: Erode District Collectorate
+  type: collector_office
+  address: Sample address, Collectorate, Erode
+  district: Erode
+  state: Tamil Nadu
+  pincode: "638001"
+  phone: "+91-424-0000025"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 11.3440
+  longitude: 77.7280
+  verified_on: 2026-09-09
+  source_url: https://erode.nic.in/
+
+- external_ref: tn-erode-esevai
+  name: Erode Town e-Sevai Centre
+  type: e_sevai
+  address: Sample address, Court Road, Erode
+  district: Erode
+  state: Tamil Nadu
+  pincode: "638001"
+  phone: "+91-424-0000026"
+  working_hours: Mon-Sat 9:30am-5:30pm
+  latitude: 11.3430
+  longitude: 77.7320
+  verified_on: 2026-09-09
+  source_url: https://www.tn.gov.in/
+
+- external_ref: tn-erode-csc
+  name: Perundurai Common Service Centre
+  type: csc
+  address: Sample address, Perundurai, Erode district
+  district: Erode
+  state: Tamil Nadu
+  pincode: "638052"
+  phone: "+91-424-0000027"
+  working_hours: Mon-Sat 9:00am-6:00pm
+  latitude: 11.3420
+  longitude: 77.6360
+  verified_on: 2026-09-10
+  source_url: https://www.tn.gov.in/
+
+- external_ref: tn-tanjore-collectorate
+  name: Thanjavur District Collectorate
+  type: collector_office
+  address: Sample address, Collectorate, Thanjavur
+  district: Thanjavur
+  state: Tamil Nadu
+  pincode: "613007"
+  phone: "+91-4362-0000028"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 10.7870
+  longitude: 79.1380
+  verified_on: 2026-09-10
+  source_url: https://tanjore.nic.in/
+
+- external_ref: tn-tanjore-welfare
+  name: Thanjavur District Social Welfare Office
+  type: welfare_office
+  address: Sample address, Collectorate Road, Thanjavur
+  district: Thanjavur
+  state: Tamil Nadu
+  pincode: "613007"
+  phone: "+91-4362-0000029"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 10.7880
+  longitude: 79.1400
+  verified_on: 2026-09-10
+  source_url: https://tanjore.nic.in/
+
+- external_ref: tn-tanjore-esevai
+  name: Thanjavur Old Bus Stand e-Sevai Centre
+  type: e_sevai
+  address: Sample address, Old Bus Stand, Thanjavur
+  district: Thanjavur
+  state: Tamil Nadu
+  pincode: "613001"
+  phone: "+91-4362-0000030"
+  working_hours: Mon-Sat 9:30am-5:30pm
+  latitude: 10.7900
+  longitude: 79.1330
+  verified_on: 2026-09-10
+  source_url: https://www.tn.gov.in/
+
+- external_ref: tn-tuticorin-taluk
+  name: Thoothukudi Taluk Office
+  type: taluk_office
+  address: Sample address, Court Road, Thoothukudi
+  district: Thoothukudi
+  state: Tamil Nadu
+  pincode: "628002"
+  phone: "+91-461-0000031"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 8.7630
+  longitude: 78.1370
+  verified_on: 2026-09-11
+  source_url: https://thoothukudi.nic.in/
+
+- external_ref: tn-villupuram-collectorate
+  name: Villupuram District Collectorate
+  type: collector_office
+  address: Sample address, Collectorate, Villupuram
+  district: Viluppuram
+  state: Tamil Nadu
+  pincode: "605602"
+  phone: "+91-4146-0000032"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 11.9400
+  longitude: 79.4900
+  verified_on: 2026-09-11
+  source_url: https://viluppuram.nic.in/
+
+- external_ref: tn-villupuram-csc
+  name: Villupuram Common Service Centre
+  type: csc
+  address: Sample address, Old Bus Stand, Villupuram
+  district: Viluppuram
+  state: Tamil Nadu
+  pincode: "605602"
+  phone: "+91-4146-0000033"
+  working_hours: Mon-Sat 9:00am-6:00pm
+  latitude: 11.9410
+  longitude: 79.4920
+  verified_on: 2026-09-11
+  source_url: https://www.tn.gov.in/
+
+- external_ref: tn-vellore-collectorate
+  name: Vellore District Collectorate
+  type: collector_office
+  address: Sample address, Collectorate, Vellore
+  district: Vellore
+  state: Tamil Nadu
+  pincode: "632004"
+  phone: "+91-416-0000034"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 12.9200
+  longitude: 79.1300
+  verified_on: 2026-09-11
+  source_url: https://vellore.nic.in/
+
+- external_ref: tn-vellore-welfare
+  name: Vellore District Social Welfare Office
+  type: welfare_office
+  address: Sample address, Collectorate Annexe, Vellore
+  district: Vellore
+  state: Tamil Nadu
+  pincode: "632004"
+  phone: "+91-416-0000035"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 12.9210
+  longitude: 79.1320
+  verified_on: 2026-09-12
+  source_url: https://vellore.nic.in/
+
+- external_ref: tn-ramanathapuram-taluk
+  name: Ramanathapuram Taluk Office
+  type: taluk_office
+  address: Sample address, Court Road, Ramanathapuram
+  district: Ramanathapuram
+  state: Tamil Nadu
+  pincode: "623501"
+  phone: "+91-4567-0000036"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 9.3630
+  longitude: 78.8400
+  verified_on: 2026-09-12
+  source_url: https://ramanathapuram.nic.in/
+
+- external_ref: tn-sivagangai-esevai
+  name: Sivagangai e-Sevai Centre
+  type: e_sevai
+  address: Sample address, Main Road, Sivagangai
+  district: Sivaganga
+  state: Tamil Nadu
+  pincode: "630561"
+  phone: "+91-4575-0000037"
+  working_hours: Mon-Sat 9:30am-5:30pm
+  latitude: 9.8430
+  longitude: 78.4800
+  verified_on: 2026-09-12
+  source_url: https://www.tn.gov.in/
+
+- external_ref: tn-sivagangai-csc
+  name: Sivagangai Common Service Centre
+  type: csc
+  address: Sample address, New Bus Stand, Sivagangai
+  district: Sivaganga
+  state: Tamil Nadu
+  pincode: "630561"
+  phone: "+91-4575-0000038"
+  working_hours: Mon-Sat 9:00am-6:00pm
+  latitude: 9.8440
+  longitude: 78.4830
+  verified_on: 2026-09-12
+  source_url: https://www.tn.gov.in/
+
+- external_ref: tn-dindigul-welfare
+  name: Dindigul District Welfare Office
+  type: welfare_office
+  address: Sample address, Collectorate Road, Dindigul
+  district: Dindigul
+  state: Tamil Nadu
+  pincode: "624005"
+  phone: "+91-451-0000039"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 10.2320
+  longitude: 77.9800
+  verified_on: 2026-09-13
+  source_url: https://dindigul.nic.in/
+
+- external_ref: tn-dindigul-taluk
+  name: Dindigul Taluk Office
+  type: taluk_office
+  address: Sample address, Court Road, Dindigul
+  district: Dindigul
+  state: Tamil Nadu
+  pincode: "624001"
+  phone: "+91-451-0000040"
+  working_hours: Mon-Fri 10:00am-5:45pm
+  latitude: 10.2330
+  longitude: 77.9820
+  verified_on: 2026-09-13
+  source_url: https://dindigul.nic.in/

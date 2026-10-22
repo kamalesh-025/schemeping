@@ -1,0 +1,39 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: tn-morning-breakfast-scheme
+name: Chief Minister's Breakfast Scheme for Primary School Students
+department: School Education Department, Government of Tamil Nadu
+level: state
+state: Tamil Nadu
+category: education
+scope: individual
+benefit_summary: >-
+  A free nutritious breakfast on school days for students of classes 1 to 5 in
+  government primary schools in Tamil Nadu.
+benefit_amount: null
+benefit_type: in_kind
+eligibility_rules:
+  applies_to: individual
+  rules:
+    all:
+      - field: is_student
+        op: "=="
+        value: true
+      - field: age
+        op: between
+        value: [5, 11]
+      - field: state
+        op: "=="
+        value: Tamil Nadu
+required_documents:
+  - name: Aadhaar card
+  - name: School ID card
+application_steps:
+  - order: 1
+    title: Enrol through the school
+    description: The school enrols every eligible primary student automatically.
+apply_url: https://www.tn.gov.in/
+deadline: null
+status: draft
+priority: 3
+last_verified_on: 2026-09-20
+source_url: https://www.tn.gov.in/

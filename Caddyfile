@@ -1,0 +1,18 @@
+# Replace schemeping.duckdns.org with your free DuckDNS subdomain.
+# Caddy obtains and renews Let's Encrypt certificates automatically.
+{
+	email {$ACME_EMAIL:admin@example.com}
+}
+
+{$SITE_ADDRESS:schemeping.duckdns.org} {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+	}
+
+	reverse_proxy api:8000
+}

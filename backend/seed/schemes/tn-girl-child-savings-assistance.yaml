@@ -1,0 +1,44 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: tn-girl-child-savings-assistance
+name: Assistance for Girls' Education Savings
+department: Social Welfare and Nutritious Meal Programme Department, Government of Tamil Nadu
+level: state
+state: Tamil Nadu
+category: women
+scope: family
+benefit_summary: >-
+  A deposit paid for every girl child in low-income families in Tamil Nadu so
+  the amount grows for her education after school.
+benefit_amount: INR 25000 per girl child
+benefit_type: cash
+eligibility_rules:
+  applies_to: family
+  rules:
+    all:
+      - field: has_girl_child
+        op: "=="
+        value: true
+      - field: household_income
+        op: "<="
+        value: 200000
+      - field: state
+        op: "=="
+        value: Tamil Nadu
+required_documents:
+  - name: Ration card
+  - name: Aadhaar card of the girl child
+  - name: Birth certificate
+  - name: Income certificate
+application_steps:
+  - order: 1
+    title: Apply at the e-Sevai centre
+    description: Submit the form with birth and income documents.
+  - order: 2
+    title: Open the deposit account
+    description: The deposit is made in the girl child's bank account.
+apply_url: https://www.tn.gov.in/
+deadline: null
+status: draft
+priority: 13
+last_verified_on: 2026-09-23
+source_url: https://www.tn.gov.in/

@@ -1,0 +1,33 @@
+# Caddy: automatic TLS for the app domain, plain HTTP for the admin panel and
+# Metabase is deliberately NOT exposed publicly.
+
+{$CADDY_DOMAIN} {
+    encode zstd gzip
+
+    # The PWA (static files) is served by the web container.
+    reverse_proxy web:8080
+
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "no-referrer"
+        -Server
+    }
+
+    # The staff admin panel: same origin, but never indexed.
+    @admin path /admin*
+    handle @admin {
+        reverse_proxy api:8000
+    }
+
+    log {
+        output stdout
+        format json
+    }
+}
+
+# The API is proxied by the web container, but the admin panel and the
+# documentation live on the API container.
+handle /docs* {
+    reverse_proxy api:8000
+}

@@ -1,0 +1,54 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: tn-moovalur-higher-education-assurance
+name: Moovalur Ramamirtham Ammaiyar Higher Education Assurance Scheme
+department: Social Welfare Department, Government of Tamil Nadu
+level: state
+state: Tamil Nadu
+category: education
+scope: individual
+benefit_summary: >-
+  Monthly financial assistance for girl students from government schools who
+  continue to higher education, paid until the course is completed.
+benefit_amount: "INR 1000 per month"
+benefit_type: cash
+eligibility_rules:
+  applies_to: individual
+  rules:
+    all:
+      - field: gender
+        op: "=="
+        value: female
+      - field: age
+        op: between
+        value: [17, 25]
+      - field: is_student
+        op: "=="
+        value: true
+      - field: state
+        op: "=="
+        value: Tamil Nadu
+      - field: annual_income
+        op: "<="
+        value: 250000
+required_documents:
+  - name: Aadhaar card
+  - name: Higher secondary mark sheet
+  - name: College admission proof
+  - name: Bank passbook
+  - name: Income certificate
+application_steps:
+  - order: 1
+    title: Confirm school and college details
+    description: The scheme applies to students who studied in government schools.
+  - order: 2
+    title: Apply through the college
+    description: Submit the form to the college welfare desk with all documents.
+  - order: 3
+    title: Track the monthly credit
+    description: Check the bank account each month for the assistance.
+apply_url: https://www.tn.gov.in/
+deadline: null
+status: draft
+priority: 40
+last_verified_on: 2026-09-10
+source_url: https://www.tn.gov.in/

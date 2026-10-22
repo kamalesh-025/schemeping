@@ -1,0 +1,43 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: tn-free-solar-pump-farmers
+name: Free Solar Pump Scheme for Farmers
+department: Agriculture Department, Government of Tamil Nadu
+level: state
+state: Tamil Nadu
+category: agriculture
+scope: individual
+benefit_summary: >-
+  A free standalone solar pump for farmers in Tamil Nadu who own agricultural
+  land and currently rely on diesel or grid power for irrigation.
+benefit_amount: One solar pump
+benefit_type: in_kind
+eligibility_rules:
+  applies_to: individual
+  rules:
+    all:
+      - field: occupation
+        op: "=="
+        value: farmer
+      - field: state
+        op: "=="
+        value: Tamil Nadu
+required_documents:
+  - name: Aadhaar card
+  - name: Land patta or cultivation record
+  - name: Farm photo and location details
+application_steps:
+  - order: 1
+    title: Apply at the agriculture office
+    description: Submit the form with land records at the block agriculture office.
+  - order: 2
+    title: Site inspection
+    description: Officials inspect the farm and confirm the water source.
+  - order: 3
+    title: Installation
+    description: The pump is installed after sanction.
+apply_url: https://www.tnagrisnet.tn.gov.in/
+deadline: null
+status: draft
+priority: 5
+last_verified_on: 2026-09-21
+source_url: https://www.tn.gov.in/

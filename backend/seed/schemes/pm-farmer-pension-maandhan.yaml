@@ -1,0 +1,45 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: pm-farmer-pension-maandhan
+name: Pradhan Mantri Kisan Maandhan Pension Yojana
+department: Ministry of Agriculture and Farmers Welfare, Government of India
+level: central
+state: null
+category: pension
+scope: individual
+benefit_summary: >-
+  A monthly pension of three thousand rupees after the age of 60 for small and
+  marginal farmers and farm labourers who enrol between 18 and 40 years of age.
+benefit_amount: INR 3000 per month after 60
+benefit_type: pension
+eligibility_rules:
+  applies_to: individual
+  rules:
+    all:
+      - field: age
+        op: between
+        value: [18, 40]
+      - field: annual_income
+        op: "<="
+        value: 250000
+      - field: occupation
+        op: in
+        value:
+          - farmer
+          - agricultural_labourer
+required_documents:
+  - name: Aadhaar card
+  - name: Bank passbook
+  - name: Land record or farm labour declaration
+application_steps:
+  - order: 1
+    title: Visit the CSC with Aadhaar
+    description: Enrol at the nearest Common Service Centre with the age proof.
+  - order: 2
+    title: Pay the monthly contribution
+    description: The contribution amount depends on the age at enrolment.
+apply_url: https://maandhan.in/
+deadline: null
+status: draft
+priority: 4
+last_verified_on: 2026-09-21
+source_url: https://www.myscheme.gov.in/

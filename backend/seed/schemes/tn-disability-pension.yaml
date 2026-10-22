@@ -1,0 +1,47 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: tn-disability-pension
+name: Pension for Persons with Disabilities
+department: Social Welfare and Nutritious Meal Programme Department, Government of Tamil Nadu
+level: state
+state: Tamil Nadu
+category: social_security
+scope: individual
+benefit_summary: >-
+  A monthly pension for residents of Tamil Nadu with 40 percent or more
+  disability who belong to low-income families.
+benefit_amount: INR 1000 per month
+benefit_type: pension
+eligibility_rules:
+  applies_to: individual
+  rules:
+    all:
+      - field: is_disabled
+        op: "=="
+        value: true
+      - field: state
+        op: "=="
+        value: Tamil Nadu
+      - field: annual_income
+        op: "<="
+        value: 250000
+required_documents:
+  - name: Aadhaar card
+  - name: Disability certificate (40 percent or more)
+  - name: Income certificate
+  - name: Bank passbook
+application_steps:
+  - order: 1
+    title: Get the disability certificate
+    description: Obtain the certificate from a government Medical Board.
+  - order: 2
+    title: Apply at the Taluk office
+    description: Submit the pension form with income and identity documents.
+  - order: 3
+    title: Receive monthly pension
+    description: The pension is credited to the bank account each month.
+apply_url: https://www.tn.gov.in/
+deadline: null
+status: draft
+priority: 14
+last_verified_on: 2026-09-23
+source_url: https://www.tn.gov.in/

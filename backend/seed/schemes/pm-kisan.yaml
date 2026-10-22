@@ -1,0 +1,52 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: pm-kisan-samman-nidhi
+name: Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)
+department: Ministry of Agriculture and Farmers Welfare
+level: central
+state: null
+category: agriculture
+scope: individual
+benefit_summary: >-
+  Income support paid in three equal instalments each year to eligible landholding
+  farmer families, transferred directly to the beneficiary bank account.
+benefit_amount: "INR 6000 per year"
+benefit_type: cash
+eligibility_rules:
+  applies_to: individual
+  rules:
+    all:
+      - field: occupation
+        op: in
+        value: [farmer, agricultural_labourer]
+      - field: age
+        op: ">="
+        value: 18
+      - field: annual_income
+        op: "<="
+        value: 600000
+required_documents:
+  - name: Aadhaar card
+    notes: Must be linked to the bank account.
+  - name: Land ownership records
+    notes: Patta or chitta showing the landholding.
+  - name: Bank passbook
+    notes: First page showing account number and IFSC.
+application_steps:
+  - order: 1
+    title: Check eligibility
+    description: Confirm the family owns cultivable land and is not an income-tax payer.
+  - order: 2
+    title: Visit the e-Sevai centre
+    description: Carry the documents to the nearest e-Sevai centre or agriculture office.
+  - order: 3
+    title: Complete biometric verification
+    description: Staff verify Aadhaar and land records, then submit the application.
+  - order: 4
+    title: Track the instalment
+    description: Check the PM-KISAN portal for beneficiary status after submission.
+apply_url: https://pmkisan.gov.in/
+deadline: null
+status: draft
+priority: 20
+last_verified_on: 2026-09-15
+source_url: https://pmkisan.gov.in/

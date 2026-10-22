@@ -1,0 +1,49 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: tn-old-age-pension
+name: Tamil Nadu Old Age Pension Scheme
+department: Social Welfare Department, Government of Tamil Nadu
+level: state
+state: Tamil Nadu
+category: social_security
+scope: individual
+benefit_summary: >-
+  Monthly pension for senior citizens from low-income households who are not
+  receiving any other government pension.
+benefit_amount: "INR 1200 per month"
+benefit_type: pension
+eligibility_rules:
+  applies_to: individual
+  rules:
+    all:
+      - field: age
+        op: ">="
+        value: 60
+      - field: annual_income
+        op: "<="
+        value: 120000
+      - field: state
+        op: "=="
+        value: Tamil Nadu
+required_documents:
+  - name: Aadhaar card
+  - name: Income certificate
+    notes: Issued by the Tahsildar.
+  - name: Bank passbook
+  - name: Age proof
+    notes: Aadhaar or birth certificate.
+application_steps:
+  - order: 1
+    title: Collect the documents
+    description: Arrange Aadhaar, income certificate, bank passbook and age proof.
+  - order: 2
+    title: Visit the Taluk office
+    description: Submit the application at the Taluk Social Welfare office.
+  - order: 3
+    title: Submit and get acknowledgement
+    description: Keep the acknowledgement number to track the application.
+apply_url: https://www.tn.gov.in/
+deadline: null
+status: draft
+priority: 30
+last_verified_on: 2026-09-10
+source_url: https://www.tn.gov.in/

@@ -1,0 +1,38 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: tn-free-diabetes-screening
+name: Free Diabetes and Blood Pressure Screening
+department: Health and Family Welfare Department, Government of Tamil Nadu
+level: state
+state: Tamil Nadu
+category: healthcare
+scope: individual
+benefit_summary: >-
+  Free yearly screening for diabetes and high blood pressure at government
+  hospitals, primary health centres and health camps in Tamil Nadu.
+benefit_amount: Free check-up and medicine
+benefit_type: service
+eligibility_rules:
+  applies_to: individual
+  rules:
+    all:
+      - field: age
+        op: ">="
+        value: 30
+      - field: state
+        op: "=="
+        value: Tamil Nadu
+required_documents:
+  - name: Aadhaar card
+application_steps:
+  - order: 1
+    title: Walk in to the nearest facility
+    description: Visit the health sub-centre, PHC or a health camp with Aadhaar.
+  - order: 2
+    title: Give the tests
+    description: Blood sugar and blood pressure are checked the same day.
+apply_url: https://www.tn.gov.in/
+deadline: null
+status: draft
+priority: 8
+last_verified_on: 2026-09-22
+source_url: https://www.tn.gov.in/

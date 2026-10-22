@@ -1,0 +1,50 @@
+# SAMPLE DATA, verify against the official source before publishing
+slug: tn-first-graduate-scholarship
+name: First Generation Graduate Scholarship
+department: Adi Dravidar and Tribal Welfare Department, Government of Tamil Nadu
+level: state
+state: Tamil Nadu
+category: education
+scope: individual
+benefit_summary: >-
+  Financial assistance for a student who would be the first graduate in the
+  family and studies in a government or aided college in Tamil Nadu.
+benefit_amount: INR 6000 per term
+benefit_type: cash
+eligibility_rules:
+  applies_to: individual
+  rules:
+    all:
+      - field: is_student
+        op: "=="
+        value: true
+      - field: age
+        op: ">="
+        value: 17
+      - field: annual_income
+        op: "<="
+        value: 250000
+      - field: state
+        op: "=="
+        value: Tamil Nadu
+required_documents:
+  - name: Aadhaar card
+  - name: Income certificate
+  - name: College fee receipt
+  - name: Bonafide student certificate
+application_steps:
+  - order: 1
+    title: Collect the income certificate
+    description: Apply for the annual income certificate at the Taluk office.
+  - order: 2
+    title: Apply through the college
+    description: Submit the scholarship form at the college welfare section.
+  - order: 3
+    title: Track the sanction
+    description: The amount is credited to the student bank account each term.
+apply_url: https://www.tn.gov.in/
+deadline: 2026-10-26
+status: draft
+priority: 1
+last_verified_on: 2026-09-20
+source_url: https://www.tn.gov.in/
