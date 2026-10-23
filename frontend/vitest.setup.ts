@@ -1,7 +1,16 @@
 import '@testing-library/jest-dom/vitest'
+import { configure } from '@testing-library/react'
 import { createRequire } from 'node:module'
 
 import * as colorManipulatorShim from './src/theme/colorManipulator'
+
+/**
+ * These are full-app integration tests in jsdom: MUI, routing, and two or three
+ * sequential API calls before the first screen settles. The 1s default for
+ * `findBy*` is too tight on a loaded CI or developer machine, and it fails as a
+ * misleading "element not found" instead of a slow test.
+ */
+configure({ asyncUtilTimeout: 5000 })
 
 /**
  * jsdom does not implement matchMedia, which MUI's responsive helpers use.

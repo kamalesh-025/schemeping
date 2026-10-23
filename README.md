@@ -420,6 +420,19 @@ variable. Highlights:
   quota mid-conversation, the assistant still answers from the retrieved
   scheme records (documents, benefits, deadlines) and reports
   `grounded: false`, instead of showing a dead-end error.
+- **Vercel (frontend only).** The repository root has no package manifest, so
+  `vercel.json` tells Vercel to install and build `frontend/` and serve
+  `frontend/dist` with an SPA rewrite. Import the repo as-is and leave the Root
+  Directory empty. The Vercel deployment hosts only the PWA; the API keeps
+  running on its own host. Point the app at it in one of two ways:
+  1. **Preferred: same-origin proxy.** Add a rewrite *above* the SPA rule in
+     `vercel.json`: `{"source": "/api/(.*)", "destination":
+     "https://YOUR-API-HOST/api/$1"}`. Cookies stay first-party, so login works
+     in every browser.
+  2. **Direct URL.** Set `VITE_API_BASE_URL=https://YOUR-API-HOST/api/v1` in the
+     Vercel project environment variables and add the Vercel domain to
+     `CORS_ORIGINS`. Cross-site cookies then need `SameSite=None; Secure`, which
+     Safari blocks, so treat this as a preview-only option.
 - The staff panel lives at `/admin` (SQLAdmin, username + password + TOTP).
 
 ## Phase status

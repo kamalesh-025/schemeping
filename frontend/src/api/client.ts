@@ -4,11 +4,12 @@
  * Tokens live in httpOnly cookies, so every request is sent with
  * `credentials: 'include'`. A 401 triggers exactly one silent refresh, then the
  * original request is retried; concurrent callers share the same refresh.
- * The API is served from the same origin (Vite proxy in dev, Caddy in prod),
- * so no CORS or cookie-domain juggling is needed.
+ * The API is same-origin by default (Vite proxy in dev, Caddy in prod, or a
+ * Vercel rewrite), so no CORS or cookie-domain juggling is needed. Set
+ * `VITE_API_BASE_URL` only when the API is served from another origin.
  */
 
-const API_BASE = '/api/v1'
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || '/api/v1').replace(/\/+$/, '')
 
 export class ApiError extends Error {
   readonly status: number
